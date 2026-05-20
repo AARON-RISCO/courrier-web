@@ -13,11 +13,11 @@ class ClienteDestinatario extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'nombre',
-        'telefono',
-        'correo',
-        'id_distrito',
-        'direccion',
-        'referencia'
-    ];
+    'nombre',
+    'telefono',
+    'correo',
+    'direccion',
+    'referencia',
+    'id_distrito'
+];
 }

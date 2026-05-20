@@ -16,11 +16,11 @@ class ClienteDestinatarioController extends Controller
     }
 
     public function create()
-        {
-            $distritos = Distrito::with('provincia.departamento')->get();
+    {
+        $distritos = Distrito::with('provincia.departamento')->get();
 
-            return view('destinatarios.create', compact('distritos'));
-        }
+        return view('destinatarios.create', compact('distritos'));
+    }
 
     public function store(Request $request)
     {
@@ -28,9 +28,17 @@ class ClienteDestinatarioController extends Controller
             'nombre' => 'required',
             'telefono' => 'required',
             'direccion' => 'required',
+            'id_distrito' => 'required|exists:distritos,id_distrito',
         ]);
 
-        ClienteDestinatario::create($request->all());
+        ClienteDestinatario::create([
+            'nombre' => $request->nombre,
+            'telefono' => $request->telefono,
+            'correo' => $request->correo,
+            'direccion' => $request->direccion,
+            'referencia' => $request->referencia,
+            'id_distrito' => $request->id_distrito,
+        ]);
 
         return redirect()->route('destinatarios.index')
             ->with('success', 'DESTINATARIO REGISTRADO');
@@ -40,7 +48,9 @@ class ClienteDestinatarioController extends Controller
     {
         $destinatario = ClienteDestinatario::findOrFail($id);
 
-        return view('destinatarios.edit', compact('destinatario'));
+        $distritos = Distrito::with('provincia.departamento')->get();
+
+        return view('destinatarios.edit', compact('destinatario', 'distritos'));
     }
 
     public function update(Request $request, $id)
@@ -51,9 +61,17 @@ class ClienteDestinatarioController extends Controller
             'nombre' => 'required',
             'telefono' => 'required',
             'direccion' => 'required',
+            'id_distrito' => 'required|exists:distritos,id_distrito',
         ]);
 
-        $destinatario->update($request->all());
+        $destinatario->update([
+            'nombre' => $request->nombre,
+            'telefono' => $request->telefono,
+            'correo' => $request->correo,
+            'direccion' => $request->direccion,
+            'referencia' => $request->referencia,
+            'id_distrito' => $request->id_distrito,
+        ]);
 
         return redirect()->route('destinatarios.index')
             ->with('success', 'DESTINATARIO ACTUALIZADO');
@@ -66,5 +84,4 @@ class ClienteDestinatarioController extends Controller
         return redirect()->route('destinatarios.index')
             ->with('success', 'DESTINATARIO ELIMINADO');
     }
-
 }

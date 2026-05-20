@@ -256,3 +256,21 @@
             }
 
         }
+        #lista-distritos{
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    background: white;
+    position: absolute;
+    width: 300px;
+    z-index: 1000;
+}
+
+#lista-distritos div{
+    padding: 8px;
+    cursor: pointer;
+}
+
+#lista-distritos div:hover{
+    background: #eee;
+}
