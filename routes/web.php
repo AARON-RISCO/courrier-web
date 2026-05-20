@@ -18,3 +18,16 @@ Route::middleware('auth')->group(function () {
     Route::resource('usuarios', UserController::class);
     
 });
+
+Route::middleware(['auth', 'role:Administrador'])->group(function () {
+
+    Route::resource('usuarios', UserController::class);
+
+});
+Route::middleware(['auth', 'role:Operador'])->group(function () {
+
+    Route::get('/envios', function () {
+        return "ENVIOS";
+    });
+
+});

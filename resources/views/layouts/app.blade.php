@@ -77,11 +77,14 @@
                 <span>Reportes</span>
             </a>
 
+           @if(Auth::user()->rol->descripcion == 'Administrador')
+
             <a href="{{ route('usuarios.index') }}">
                 <i class="fa-solid fa-user-shield"></i>
                 <span>Usuarios</span>
             </a>
-
+         @endif
+         
             <a href="#">
                 <i class="fa-solid fa-gear"></i>
                 <span>Configuración</span>
