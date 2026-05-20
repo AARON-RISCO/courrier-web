@@ -138,7 +138,7 @@ table tbody tr:hover{
 /* INPUTS */
 
 input,
-select{
+select,textarea{
     width:100%;
     padding:14px;
     margin-bottom:20px;
@@ -149,7 +149,7 @@ select{
 }
 
 input:focus,
-select:focus{
+select:focus,textarea:focus{
     border:1px solid #0B5D3B;
 }
 

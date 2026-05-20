@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ClienteDestinatario;
+use App\Models\Distrito;
 
 class ClienteDestinatarioController extends Controller
 {
@@ -15,9 +16,11 @@ class ClienteDestinatarioController extends Controller
     }
 
     public function create()
-    {
-        return view('destinatarios.create');
-    }
+        {
+            $distritos = Distrito::with('provincia.departamento')->get();
+
+            return view('destinatarios.create', compact('distritos'));
+        }
 
     public function store(Request $request)
     {
@@ -63,4 +66,5 @@ class ClienteDestinatarioController extends Controller
         return redirect()->route('destinatarios.index')
             ->with('success', 'DESTINATARIO ELIMINADO');
     }
+
 }
