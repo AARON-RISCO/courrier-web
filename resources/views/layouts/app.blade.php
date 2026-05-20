@@ -57,7 +57,7 @@
                 <span>Repartidores</span>
             </a>
 
-            <a href="#">
+            <a href="{{ route('clientes.index') }}">
                 <i class="fa-solid fa-users"></i>
                 <span>Clientes</span>
             </a>
