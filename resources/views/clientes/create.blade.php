@@ -1,50 +1,61 @@
-{{-- <h1>Nuevo Cliente</h1>
+@extends('layouts.app')
 
-<form action="{{ route('clientes.store') }}" method="POST">
+@section('contenido')
+<div class="card">
+    <h1>Nuevo Cliente</h1>
 
-    @csrf
+    <form action="{{ route('clientes.store') }}" method="POST">
 
-    <label>Razón Social</label>
-    <input type="text" name="razon_social">
+        @csrf
 
-    <br><br>
+        <label>Razón Social</label>
+        <input type="text" name="razon_social">
 
-    <label>RUC</label>
-    <input type="text" name="ruc">
+        <br><br>
 
-    <br><br>
+        <label>RUC</label>
+        <input type="text" name="ruc">
 
-    <label>Teléfono</label>
-    <input type="text" name="telefono">
+        <br><br>
 
-    <br><br>
+        <label>Teléfono</label>
+        <input type="text" name="telefono">
 
-    <label>Correo</label>
-    <input type="email" name="correo">
+        <br><br>
 
-    <br><br>
+        <label>Correo</label>
+        <input type="email" name="correo">
 
-    <label>Dirección Fiscal</label>
-    <input type="text" name="direccion_fiscal">
+        <br><br>
 
-    <br><br>
+        <label>Dirección Fiscal</label>
+        <input type="text" name="direccion_fiscal">
 
-    <label>Estado</label>
+        <br><br>
 
-    <select name="estado">
-        <option value="ACTIVO">
-            ACTIVO
-        </option>
+        <label>Estado</label>
 
-        <option value="INACTIVO">
-            INACTIVO
-        </option>
-    </select>
+        <select name="estado">
+            <option value="ACTIVO">
+                ACTIVO
+            </option>
 
-    <br><br>
+            <option value="INACTIVO">
+                INACTIVO
+            </option>
+        </select>
 
-    <button type="submit">
-        Guardar Cliente
-    </button>
-
-</form> --}}
+        <br><br>
+        <div class="botones">
+            <button type="submit">
+            Guardar Cliente
+            </button>
+              
+            <a href="{{ route('clientes.index') }}" class="btn-cancelar">
+                Cancelar
+            </a>
+        </div>
+       
+    </form>
+</div>
+@endsection
