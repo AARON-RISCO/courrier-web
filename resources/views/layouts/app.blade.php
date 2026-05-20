@@ -61,6 +61,10 @@
                 <i class="fa-solid fa-users"></i>
                 <span>Clientes</span>
             </a>
+            <a href="{{ route('destinatarios.index') }}">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Destinatarios</span>
+            </a>
 
             <a href="#">
                 <i class="fa-solid fa-warehouse"></i>

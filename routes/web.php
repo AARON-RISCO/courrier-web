@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClienteDestinatarioController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -16,6 +17,7 @@ require __DIR__.'/auth.php';
 Route::middleware('auth')->group(function () {
 
     Route::resource('usuarios', UserController::class);
+    Route::resource('destinatarios', ClienteDestinatarioController::class);
     
 });
 
