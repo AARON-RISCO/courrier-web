@@ -7,35 +7,20 @@
     <form action="{{ route('clientes.store') }}" method="POST">
 
         @csrf
+        <input type="text" name="ruc" placeholder="RUC" required>
 
-        <label>Razón Social</label>
-        <input type="text" name="razon_social">
+        <input type="text" name="razon_social" placeholder="RAZON SOCIAL" required>
 
-        <br><br>
+        <input type="text" name="telefono" placeholder="TELEFONO" required>
+    
+        <input type="email" name="correo" placeholder="CORREO" required>
 
-        <label>RUC</label>
-        <input type="text" name="ruc">
+        <input type="text" name="direccion_fiscal" placeholder="DIRECCION FISCAL">
 
-        <br><br>
-
-        <label>Teléfono</label>
-        <input type="text" name="telefono">
-
-        <br><br>
-
-        <label>Correo</label>
-        <input type="email" name="correo">
-
-        <br><br>
-
-        <label>Dirección Fiscal</label>
-        <input type="text" name="direccion_fiscal">
-
-        <br><br>
-
-        <label>Estado</label>
-
-        <select name="estado">
+        <select name="estado" aria-placeholder="estado" required>
+            <option value="">
+                SELECCIONA ESTADO
+            </option>
             <option value="ACTIVO">
                 ACTIVO
             </option>
