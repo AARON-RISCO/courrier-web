@@ -20,4 +20,9 @@ class ClienteDestinatario extends Model
     'referencia',
     'id_distrito'
 ];
+    public function distrito()
+    {
+        return $this->belongsTo(Distrito::class, 'id_distrito');
+    }
 }
+

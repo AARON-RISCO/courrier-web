@@ -1,108 +1,113 @@
-@extends('layouts.app')
+    @extends('layouts.app')
 
-@section('contenido')
+    @section('contenido')
 
-<div class="titulo">
+    <div class="titulo">
 
-    <h1>Destinatarios</h1>
+        <h1>Destinatarios</h1>
 
-    <a href="{{ route('destinatarios.create') }}" class="btn-nuevo">
-        + Nuevo Destinatario
-    </a>
+        <a href="{{ route('destinatarios.create') }}" class="btn-nuevo">
+            + Nuevo Destinatario
+        </a>
 
-</div>
+    </div>
 
-<div class="tabla">
+    <div class="tabla">
 
-    <table>
+        <table>
 
-        <thead>
+            <thead>
 
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Teléfono</th>
-                <th>Correo</th>
-                <th>Dirección</th>
-                <th>Referencia</th>
-                <th class="col-acciones">Acciones</th>
-            </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Dirección</th>
+                    <th>Distrito</th>
+                    <th>Referencia</th>
+                    <th class="col-acciones">Acciones</th>
+                </tr>
 
-        </thead>
+            </thead>
 
-        <tbody>
+            <tbody>
 
-            @forelse($destinatarios as $destinatario)
+                @forelse($destinatarios as $destinatario)
 
-            <tr>
+                <tr>
 
-                <td>
-                    {{ $destinatario->id_cliente_destinatario }}
-                </td>
+                    <td>
+                        {{ $destinatario->id_cliente_destinatario }}
+                    </td>
 
-                <td>
-                    {{ $destinatario->nombre }}
-                </td>
+                    <td>
+                        {{ $destinatario->nombre }}
+                    </td>
 
-                <td>
-                    {{ $destinatario->telefono }}
-                </td>
+                    <td>
+                        {{ $destinatario->telefono }}
+                    </td>
 
-                <td>
-                    {{ $destinatario->correo }}
-                </td>
+                    <td>
+                        {{ $destinatario->correo }}
+                    </td>
+                    
+                    <td>
+                        {{ $destinatario->direccion }}
+                    </td>
 
-                <td>
-                    {{ $destinatario->direccion }}
-                </td>
+                    <td>
+                        {{ $destinatario->distrito->nombre ?? 'SIN DISTRITO' }}
+                    </td>
+                    
+                    <td>
+                        {{ $destinatario->referencia }}
+                    </td>
 
-                <td>
-                    {{ $destinatario->referencia }}
-                </td>
+                    <td class="td-acciones">
 
-                <td class="td-acciones">
+                        <div class="acciones">
 
-                    <div class="acciones">
+                            <a href="{{ route('destinatarios.edit', $destinatario->id_cliente_destinatario) }}"
+                            class="btn-editar">
+                                Editar
+                            </a>
 
-                        <a href="{{ route('destinatarios.edit', $destinatario->id_cliente_destinatario) }}"
-                        class="btn-editar">
-                            Editar
-                        </a>
+                            <form action="{{ route('destinatarios.destroy', $destinatario->id_cliente_destinatario) }}"
+                            method="POST">
 
-                        <form action="{{ route('destinatarios.destroy', $destinatario->id_cliente_destinatario) }}"
-                        method="POST">
+                                @csrf
+                                @method('DELETE')
 
-                            @csrf
-                            @method('DELETE')
+                                <button type="submit" class="btn-eliminar">
+                                    Eliminar
+                                </button>
 
-                            <button type="submit" class="btn-eliminar">
-                                Eliminar
-                            </button>
+                            </form>
 
-                        </form>
+                        </div>
 
-                    </div>
+                    </td>
 
-                </td>
+                </tr>
 
-            </tr>
+                @empty
 
-            @empty
+                <tr>
 
-            <tr>
+                    <td colspan="7" style="text-align:center;">
+                        NO HAY DESTINATARIOS REGISTRADOS
+                    </td>
 
-                <td colspan="7" style="text-align:center;">
-                    NO HAY DESTINATARIOS REGISTRADOS
-                </td>
+                </tr>
 
-            </tr>
+                @endforelse
 
-            @endforelse
+            </tbody>
 
-        </tbody>
+        </table>
 
-    </table>
+    </div>
 
-</div>
-
-@endsection
+    @endsection
